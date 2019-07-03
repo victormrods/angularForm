@@ -1,0 +1,159 @@
+<form #f = "ngForm" (ngSubmit) = "onSubmit(f)" class="form-horizontal" >
+  <div class="form-group" [class.has-error] = " !nome.valid && nome.touched"
+      [class.has-feedback] = " !nome.valid && nome.touched">
+
+      <div class="col-sm-12">
+        <label for="nomes" [class.control-label]="!nome.valid && nome.touched">Nome</label>
+      </div>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome"
+             name="nome" [(ngModel)]="usuario.nome" required #nome="ngModel" >
+             
+             <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!nome.valid && nome.touched"></span>
+             <span id="nomes" class="sr-only">(error)</span>
+             <div  class="alert alert-danger" role="alert" *ngIf="!nome.valid && nome.touched">
+               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+               <span class="sr-only">Error:</span>
+               Nome obrigatório.
+             </div>
+      </div>
+      <!-- Util para quando for ver as classes para editar os estilos 
+      <div>
+        {{ nome.className }}
+      </div> -->
+
+  </div>
+  <div class="form-group" [class.has-error] = " !email.valid && email.touched"
+      [class.has-feedback] = " !email.valid && email.touched">
+      <div class="col-sm-12">
+        <label for="email" [class.control-label]="!email.valid && email.touched">Email address</label>
+      </div>
+      <div class="col-sm-12">
+        <input type="email" class="form-control" id="email" placeholder="your@email.com"
+            name="email" [(ngModel)]="usuario.email" required email #email="ngModel" >
+            
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!email.valid && email.touched"></span>
+        <span id="s_email" class="sr-only">(error)</span>
+        <div  class="alert alert-danger" role="alert" *ngIf="!email.valid && email.touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Email inválido.
+        </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3"
+      [class.has-error] = " !cep.valid && cep.touched"
+         [class.has-feedback] = " !cep.valid && cep.touched" >
+        <label for="cep" [class.control-label]="!cep.valid && cep.touched">CEP</label>
+        <input type="cep" class="form-control" id="cep" placeholder="00000-00"
+            name="cep" ngModel required  #cep="ngModel" >
+            
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!cep.valid && cep.touched"></span>
+        <span  class="sr-only">(error)</span>
+        <div  class="alert alert-danger" role="alert" *ngIf="!cep.valid && cep.touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            CEP inválido.
+        </div>
+      </div>
+
+    <div class="col-sm-3"
+        [class.has-error] = " !numero.valid && numero.touched"
+            [class.has-feedback] = " !numero.valid && numero.touched" >
+      <label for="numero" [class.control-label]="!numero.valid && numero.touched">Número</label>
+      <input type="numero" class="form-control" id="numero" placeholder=""
+          name="numero" ngModel required  #numero="ngModel" >
+          
+      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!numero.valid && numero.touched"></span>
+      <span  class="sr-only">(error)</span>
+      <div  class="alert alert-danger" role="alert" *ngIf="!numero.valid && numero.touched">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          Número inválido.
+      </div>
+    </div>
+
+    <div class="col-sm-6" >
+        <label for="complemento">Complemento</label>
+        <input type="complemento" class="form-control" id="complemento" placeholder="Apartamento, andar..."
+            name="complemento" ngModel   #complemento="ngModel" >
+    </div>
+  </div>
+
+  <div class="form-group" [class.has-error] = " !rua.valid && rua.touched"
+      [class.has-feedback] = " !rua.valid && rua.touched">
+
+      <div class="col-sm-12">
+        <label for="rua" [class.control-label]="!rua.valid && rua.touched">Rua</label>
+      </div>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="rua" placeholder="Rua..."
+             name="rua" ngModel required #rua="ngModel" >
+             
+             <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!rua.valid && rua.touched"></span>
+             <span id="rua" class="sr-only">(error)</span>
+             <div  class="alert alert-danger" role="alert" *ngIf="!rua.valid && rua.touched">
+               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+               <span class="sr-only">Error:</span>
+               Rua obrigatório.
+             </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <div class="col-sm-5"
+        [class.has-error] = " !bairro.valid && bairro.touched"
+         [class.has-feedback] = " !bairro.valid && bairro.touched" >
+        <label for="bairro" [class.control-label]="!bairro.valid && bairro.touched">Bairro</label>
+        <input type="bairro" class="form-control" id="bairro" 
+            name="bairro" ngModel required  #bairro="ngModel" >
+            
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!bairro.valid && bairro.touched"></span>
+        <span  class="sr-only">(error)</span>
+        <div  class="alert alert-danger" role="alert" *ngIf="!bairro.valid && bairro.touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Bairro inválido.
+        </div>
+      </div>
+
+      <div class="col-sm-4"
+        [class.has-error] = " !cidade.valid && cidade.touched"
+         [class.has-feedback] = " !cidade.valid && cidade.touched" >
+        <label for="cidade" [class.control-label]="!cidade.valid && cidade.touched">Cidade</label>
+        <input type="cidade" class="form-control" id="cidade" 
+            name="cidade" ngModel required  #cidade="ngModel" >
+            
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!cidade.valid && cidade.touched"></span>
+        <span  class="sr-only">(error)</span>
+        <div  class="alert alert-danger" role="alert" *ngIf="!cidade.valid && cidade.touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Cidade obrigatória.
+        </div>
+      </div>
+
+      <div class="col-sm-3"
+        [class.has-error] = " !estado.valid && estado.touched"
+         [class.has-feedback] = " !estado.valid && estado.touched" >
+        <label for="estado" [class.control-label]="!estado.valid && estado.touched">Estado</label>
+        <input type="estado" class="form-control" id="estado" 
+            name="estado" ngModel required  #estado="ngModel" >
+            
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!estado.valid && estado.touched"></span>
+        <span  class="sr-only">(error)</span>
+        <div  class="alert alert-danger" role="alert" *ngIf="!estado.valid && estado.touched">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Estado obrigatório.
+        </div>
+      </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Enviar</button>
+
+  <app-form-debug [form]="f"></app-form-debug>
+</form>
