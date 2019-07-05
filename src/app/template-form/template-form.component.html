@@ -41,7 +41,7 @@
       <div class="col-sm-3" [ngClass]="aplicaCssErro(cep)">
           <label for="cep" [class.control-label]="!cep.valid && cep.touched">CEP</label>
           <input type="cep" class="form-control" id="cep" placeholder="00000-00"
-              name="cep" ngModel required  #cep="ngModel" (blur)="consultaCep($event.target.value)">
+              name="cep" ngModel required  #cep="ngModel" (blur)="consultaCep($event.target.value, f)">
               
           <app-campo-control-erro 
             [mostrarErro]="verificaValidTouched(cep)" 
@@ -49,7 +49,7 @@
           </app-campo-control-erro>
         </div>
 
-      <div class="col-sm-3" [ngClass]="aplicaCssErro(numero)">
+        <div class="col-sm-3" [ngClass]="aplicaCssErro(numero)">
         <label for="numero" [class.control-label]="!numero.valid && numero.touched">Número</label>
         <input type="numero" class="form-control" id="numero" placeholder=""
             name="numero" ngModel required  #numero="ngModel" >
