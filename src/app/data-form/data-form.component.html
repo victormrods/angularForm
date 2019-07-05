@@ -1,3 +1,40 @@
-<p>
-  data-form works!
-</p>
+<form  class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+  
+  <div class="form-group" [ngClass]="aplicaCssErro('nome')" >
+      <div class="col-sm-12" >
+        <label for="nomes"  class="control-label" >Nome</label>
+      </div>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome"
+             name="nome" formControlName="nome">     
+          <app-campo-control-erro
+          [mostrarErro]="verificaValidTouched('nome')"
+          [msgErro]="msgErro('nome')" >
+          </app-campo-control-erro>
+      </div>
+
+
+  </div>
+
+  <div class="form-group" [ngClass]="aplicaCssErro('email')">
+      <div class="col-sm-12">
+        <label for="email" class="control-label">Email</label>
+      </div>
+      <div class="col-sm-12">
+        <input type="email" class="form-control" id="email" placeholder="your@email.com"
+            name="email" formControlName="email" >
+          <app-campo-control-erro
+          [mostrarErro]="verificaValidTouched('email')"
+          [msgErro]="msgErro('email')" >
+          </app-campo-control-erro>
+      </div>
+  </div>
+
+ 
+
+  <button type="submit" class="btn btn-primary" >Enviar</button>
+  <button class="btn" (click)="formulario.reset()" >Cancelar</button>
+
+  <app-form-debug [form]="formulario"></app-form-debug>
+  
+</form>

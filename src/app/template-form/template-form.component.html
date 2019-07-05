@@ -11,7 +11,7 @@
              
             <app-campo-control-erro 
               [mostrarErro]="verificaValidTouched(nome)" 
-              msgErro="Nome é obrigatório.">
+              [msgErro]="msgErro(nome)">
             </app-campo-control-erro>
       </div>
       <!-- Util para quando for ver as classes para editar os estilos 
@@ -30,7 +30,7 @@
             
         <app-campo-control-erro 
           [mostrarErro]="verificaValidTouched(email)" 
-          msgErro="Email é obrigatório.">
+          [msgErro]="msgErro(email)">
          </app-campo-control-erro>
       </div>
   </div>
@@ -39,14 +39,20 @@
 
     <div class="form-group">
       <div class="col-sm-3" [ngClass]="aplicaCssErro(cep)">
-          <label for="cep" [class.control-label]="!cep.valid && cep.touched">CEP</label>
-          <input type="cep" class="form-control" id="cep" placeholder="00000-00"
-              name="cep" ngModel required  #cep="ngModel" (blur)="consultaCep($event.target.value, f)">
-              
-          <app-campo-control-erro 
-            [mostrarErro]="verificaValidTouched(cep)" 
-            msgErro="CEP é obrigatório.">
-          </app-campo-control-erro>
+          <div>
+            <label for="cep" [class.control-label]="!cep.valid && cep.touched" class="control-label">CEP</label>
+          </div>
+          <div>
+            <input type="cep" class="form-control" id="cep" placeholder="00000-00"
+                name="cep" ngModel required  #cep="ngModel" (blur)="consultaCep($event.target.value, f)">
+                
+            <app-campo-control-erro 
+              [mostrarErro]="verificaValidTouched(cep)" 
+              [msgErro]="msgErro(cep)"
+              [mudarAltura]="true" >
+            </app-campo-control-erro>
+
+          </div>
         </div>
 
         <div class="col-sm-3" [ngClass]="aplicaCssErro(numero)">
@@ -56,7 +62,8 @@
             
         <app-campo-control-erro 
           [mostrarErro]="verificaValidTouched(numero)" 
-          msgErro="Número é obrigatório.">
+          [msgErro]="msgErro(numero)"
+          [mudarAltura]="true" >
         </app-campo-control-erro>
       </div>
 
@@ -78,7 +85,7 @@
               
         <app-campo-control-erro 
           [mostrarErro]="verificaValidTouched(rua)" 
-          msgErro="Rua é obrigatório.">
+          [msgErro]="msgErro(rua)">
         </app-campo-control-erro>
         </div>
     </div>
@@ -91,7 +98,8 @@
               
           <app-campo-control-erro 
             [mostrarErro]="verificaValidTouched(bairro)" 
-            msgErro="Bairro é obrigatório.">
+            [msgErro]="msgErro(bairro)"
+            [mudarAltura]="true" >
           </app-campo-control-erro>
         </div>
 
@@ -102,7 +110,8 @@
               
           <app-campo-control-erro 
             [mostrarErro]="verificaValidTouched(cidade)" 
-            msgErro="Cidade é obrigatório.">
+            [msgErro]="msgErro(cidade)"
+            [mudarAltura]="true" >
           </app-campo-control-erro>
         </div>
 
@@ -113,7 +122,8 @@
               
           <app-campo-control-erro 
             [mostrarErro]="verificaValidTouched(estado)" 
-            msgErro="Estado é obrigatório.">
+            [msgErro]="msgErro(estado)"
+            [mudarAltura]="true" >
           </app-campo-control-erro>
         </div>
 
