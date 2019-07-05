@@ -21,9 +21,14 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form);
-    console.log(form.nome);
-  }
+//    console.log(form);
+//    console.log(form.nome);
+
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+      .map(res => res)
+      .subscribe(dados => console.log(dados));
+  
+}
 
   verificaValidTouched(campo) {
     return !campo.valid && campo.touched;
@@ -60,6 +65,8 @@ export class TemplateFormComponent implements OnInit {
   }
 
   populaDadosForm(dados, formulario) {
+
+    // COMM: O set value obriga a preencher todos os campos do formulário, oq pode ser um problema dependendo de quantos campos tiver
     /* formulario.setValue({
       nome: formulario.value.nome,
       email: formulario.value.email,
@@ -74,6 +81,7 @@ export class TemplateFormComponent implements OnInit {
       }
     }); */
 
+    // COMM: Com o patchValue conseguimos alterar somente partes específicas do formulário, sem precisar interfirir no resto
     formulario.form.patchValue({
       endereco: {
         rua: dados.logradouro,
