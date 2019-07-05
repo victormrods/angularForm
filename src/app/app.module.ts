@@ -1,3 +1,4 @@
+import { DataFormModule } from './data-form/data-form.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,13 +14,13 @@ import { CampoControlErroComponent } from './campo-control-erro/campo-control-er
 @NgModule({
   declarations: [
     AppComponent,
-    DataFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    TemplateFormModule
+    TemplateFormModule,
+    DataFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]
