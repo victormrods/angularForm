@@ -22,9 +22,14 @@ export class CampoControlErroComponent implements OnInit {
       let campo = this.msgErro.campo; 
       if(this.msgErro.erros != null){
         const erros = this.msgErro.erros;
-        const primeiraLetra = campo.slice(0, 1);
-        console.log(erros);
-        campo = campo.replace(primeiraLetra, primeiraLetra.toUpperCase());
+        if(campo.indexOf('.') >= 0){
+          let nomeCampoGrupo = campo.substr((campo.indexOf('.') + 1));
+          const primeiraLetra = nomeCampoGrupo.slice(0, 1);
+          campo = nomeCampoGrupo.replace(primeiraLetra, primeiraLetra.toUpperCase());
+        } else {
+          const primeiraLetra = campo.slice(0, 1);
+          campo = campo.replace(primeiraLetra, primeiraLetra.toUpperCase());
+        }
         if(erros['minlength']){
           return `${campo} deve conter ao menos ${erros['minlength'].requiredLength} caracteres.`;
         } else if(erros['required'] ){

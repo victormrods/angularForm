@@ -29,16 +29,25 @@ export class DataFormComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome: [null, [v.required, v.minLength(3), v.maxLength(20)] ],
       email: [null, [v.required, v.email]],
+      endereco : this.formBuilder.group({
+        cep: [null, [v.required] ],
+        numero: [null, [v.required]],
+        complemento: [null],
+        rua: [null, [v.required]],
+        bairro: [null, [v.required]],
+        cidade: [null, [v.required]],
+        estado: [null, [v.required]]
+      })
     });
 
   }
 
-  verificaValidTouched(campo) {
+  verificaValidTouched(campo : string) {
     const input = this.formulario.get(campo);
     return !input.valid && input.touched;
   }
 
-  aplicaCssErro(campo) {
+  aplicaCssErro(campo : string) {
     return {
       'has-error' : this.verificaValidTouched(campo),
       'has-feedback' : this.verificaValidTouched(campo)

@@ -8,8 +8,8 @@
         <input type="text" class="form-control" id="nome" placeholder="Insira o nome"
              name="nome" formControlName="nome">     
           <app-campo-control-erro
-          [mostrarErro]="verificaValidTouched('nome')"
-          [msgErro]="msgErro('nome')" >
+            [mostrarErro]="verificaValidTouched('nome')"
+            [msgErro]="msgErro('nome')" >
           </app-campo-control-erro>
       </div>
 
@@ -24,13 +24,98 @@
         <input type="email" class="form-control" id="email" placeholder="your@email.com"
             name="email" formControlName="email" >
           <app-campo-control-erro
-          [mostrarErro]="verificaValidTouched('email')"
-          [msgErro]="msgErro('email')" >
+            [mostrarErro]="verificaValidTouched('email')"
+            [msgErro]="msgErro('email')" >
           </app-campo-control-erro>
       </div>
   </div>
 
- 
+  <div formGroupName="endereco">
+
+      <div class="form-group" >
+        <div class="col-sm-3" [ngClass]="aplicaCssErro('endereco.cep')" >
+            <div>
+              <label for="cep" class="control-label">CEP</label>
+            </div>
+            <div>
+              <input type="cep" class="form-control" id="cep" placeholder="00000-00"
+                  name="cep"  formControlName="cep" >
+                <app-campo-control-erro
+                  [mostrarErro]="verificaValidTouched('endereco.cep')"
+                  [msgErro]="msgErro('endereco.cep')" >
+                 </app-campo-control-erro>
+            </div>
+          </div>
+  
+          <div class="col-sm-3" [ngClass]="aplicaCssErro('endereco.numero')" >
+          <label for="numero" class="control-label">Número</label>
+          <input type="numero" class="form-control" id="numero" placeholder=""
+              name="numero"  formControlName="numero">
+              <app-campo-control-erro
+                [mostrarErro]="verificaValidTouched('endereco.numero')"
+                [msgErro]="msgErro('endereco.numero')" >
+             </app-campo-control-erro>
+        </div>
+  
+        <div class="col-sm-6" >
+            <label for="complemento">Complemento</label>
+            <input type="complemento" class="form-control" id="complemento" placeholder="Apartamento, andar..."
+                name="complemento"  formControlName="complemento" >
+                
+        </div>
+      </div>
+  
+      <div class="form-group" [ngClass]="aplicaCssErro('endereco.rua')" >
+  
+          <div class="col-sm-12">
+            <label for="rua" class="control-label">Rua</label>
+          </div>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="rua" placeholder="Rua..."
+                name="rua"   formControlName="rua">
+              <app-campo-control-erro
+                [mostrarErro]="verificaValidTouched('endereco.rua')"
+                [msgErro]="msgErro('endereco.rua')" >
+              </app-campo-control-erro>
+                
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <div class="col-sm-5" [ngClass]="aplicaCssErro('endereco.bairro')" >
+            <label for="bairro" class="control-label">Bairro</label>
+            <input type="bairro" class="form-control" id="bairro" 
+                name="bairro" formControlName="bairro" >
+              <app-campo-control-erro
+                [mostrarErro]="verificaValidTouched('endereco.bairro')"
+                [msgErro]="msgErro('endereco.bairro')" >
+              </app-campo-control-erro>
+            
+          </div>
+  
+          <div class="col-sm-4" [ngClass]="aplicaCssErro('endereco.cidade')" >
+            <label for="cidade" class="control-label">Cidade</label>
+            <input type="cidade" class="form-control" id="cidade" 
+                name="cidade" formControlName="cidade">
+              <app-campo-control-erro
+                [mostrarErro]="verificaValidTouched('endereco.cidade')"
+                [msgErro]="msgErro('endereco.cidade')" >
+              </app-campo-control-erro>
+          </div>
+  
+          <div class="col-sm-3" [ngClass]="aplicaCssErro('endereco.estado')"  >
+            <label for="estado" class="control-label" >Estado</label>
+            <input type="estado" class="form-control" id="estado" 
+                name="estado" formControlName="estado" >
+              <app-campo-control-erro
+                  [mostrarErro]="verificaValidTouched('endereco.estado')"
+                  [msgErro]="msgErro('endereco.estado')" >
+              </app-campo-control-erro>
+           
+          </div>
+  
+      </div>
+    </div>
 
   <button type="submit" class="btn btn-primary" >Enviar</button>
   <button class="btn" (click)="formulario.reset()" >Cancelar</button>
